@@ -1,44 +1,66 @@
 <script type="text/javascript">
-var rce_config = {
-	toolbarGroups: [
-		{ name: 'basicstyles' },
-		{ name: 'align' },
-		{ name: 'styles' },
-		{ name: 'colors', groups: [ 'colors', 'cleanup' ] },
-		{ name: 'insert' },
-		{ name: 'list' },
-		{ name: 'blocks', groups: [ 'blocks', 'clipboard', 'bidi' ] },
-		{ name: 'extra', groups: [ 'extra', 'extradesc' ] },
-		{ name: 'undo' },
-		{ name: 'document',	groups: [ 'tools', 'mode' ] }
-	],
+  function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      if (pair.length > 0 && pair[0] == variable) {
+        return pair[1];
+      }
+    }
+    return false;
+  }
 
-	language: rinlanguage,
-	removePlugins: rinautosave,
+  var rce_config = {
+    toolbarGroups: [
+      {name: 'basicstyles'},
+      {name: 'align'},
+      {name: 'styles'},
+      {name: 'colors', groups: ['colors', 'cleanup']},
+      {name: 'insert'},
+      {name: 'list'},
+      {name: 'blocks', groups: ['blocks', 'clipboard', 'bidi']},
+      {name: 'extra', groups: ['extra', 'extradesc']},
+      {name: 'undo'},
+      {name: 'document', groups: ['tools', 'mode']}
+    ],
 
-	// The default plugins included in the basic setup define some buttons that
-	// are not needed in a basic editor. They are removed here.
-	removeButtons: 'Cut,Copy,Paste,Anchor,BGColor,indent,'+rinrmvbut+'',
+    language: rinlanguage,
+    removePlugins: rinautosave,
 
-	// Dialog windows are also simplified.
-	removeDialogTabs: 'link:advanced',
+    extraPlugins: 'filebrowser',
 
-	contentsCss: content_url,
-	title: false,
-	image_prefillDimensions: false,
-	height: rinheight,
-	fontSize_sizes: fontsizes,
-	smiley_images: dropdownsmiliesurl.concat(dropdownsmiliesurlmore),
-	smiley_descriptions: dropdownsmiliesname.concat(dropdownsmiliesnamemore),
-	smiley_name: dropdownsmiliesdes.concat(dropdownsmiliesdesmore),
-	smiley_path: smileydirectory,
-	smiley_sc: rinsmileysc,
-	autosave_saveDetectionSelectors: 'input[name*="post"],input[name*="save"],input[name*="preview"]',
-	autosave_message: rinautosavemsg,
-	autoGrow_minHeight: rinheight,
-	autoGrow_maxHeight: rinmaxheight,
-	imgurClientId: rinimgur,
-	disableNativeSpellChecker: false,
-	skin: rinskin
-}
+    filebrowserImageUploadUrl: '/posting.php?mode=post&_ucajax=1&_uc_add_file=1',
+
+    on: {
+      instanceReady: function (e) {
+        e.editor.config.filebrowserImageUploadUrl += '&f=' + getQueryVariable('f');
+      }
+    },
+
+    // The default plugins included in the basic setup define some buttons that
+    // are not needed in a basic editor. They are removed here.
+    removeButtons: 'Cut,Copy,Paste,Anchor,BGColor,indent,' + rinrmvbut + '',
+
+    // Dialog windows are also simplified.
+    removeDialogTabs: 'link:advanced',
+
+    contentsCss: content_url,
+    title: false,
+    image_prefillDimensions: false,
+    height: rinheight,
+    fontSize_sizes: fontsizes,
+    smiley_images: dropdownsmiliesurl.concat(dropdownsmiliesurlmore),
+    smiley_descriptions: dropdownsmiliesname.concat(dropdownsmiliesnamemore),
+    smiley_name: dropdownsmiliesdes.concat(dropdownsmiliesdesmore),
+    smiley_path: smileydirectory,
+    smiley_sc: rinsmileysc,
+    autosave_saveDetectionSelectors: 'input[name*="post"],input[name*="save"],input[name*="preview"]',
+    autosave_message: rinautosavemsg,
+    autoGrow_minHeight: rinheight,
+    autoGrow_maxHeight: rinmaxheight,
+    imgurClientId: rinimgur,
+    disableNativeSpellChecker: false,
+    skin: rinskin
+  }
 </script>
