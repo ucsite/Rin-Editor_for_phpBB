@@ -1,17 +1,17 @@
 {
   "name": "rin/editor",
   "type": "phpbb-extension",
-  "description": "Rin Editor for phpBB",
-  "homepage": "https://github.com/martec/Rin-Editor_for_phpBB",
-  "version": "0.2.18",
-  "time": "2019-06-21",
+  "description": "UCN Editor for phpBB",
+  "homepage": "http://www.ucnology.com",
+  "version": "1.0.0",
+  "time": "2019-09-01",
   "license": "GPL-2.0",
   "authors": [
 	{
-	  "name": "martec",
-	  "email": "",
+	  "name": "LiuCongshan",
+	  "email": "congshan@ucnology.com",
 	  "homepage": "",
-	  "role": "owner"
+	  "role": "Team Leader"
 	}
   ],
   "require": {
@@ -21,7 +21,7 @@
 	"phpbb/epv": "dev-master"
   },
   "extra": {
-	"display-name": "Rin Editor for phpBB",
+	"display-name": "UCN Editor for phpBB",
 	"soft-require": {
 	  "phpbb/phpbb": ">=3.2.0"
 	},
